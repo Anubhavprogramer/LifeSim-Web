@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NewLife Privacy Policy</title>
+  <meta name="description" content="How the NewLife life-simulation game handles your data.">
+  <meta name="theme-color" content="#FF8A3D">
+  <link rel="icon" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Tokens copied from src/theme.ts in the NewLife app. */
+    :root {
+      --bg: #FFF8EC; --surface: #FFFFFF; --ink: #2B1E3F; --muted: #7A6C8F; --line: #EADFCF;
+      --primary: #FF8A3D; --primary-dark: #D9631C; --gold: #FFC23D; --gold-dark: #D99A12;
+      --teal: #1FB5A6; --teal-dark: #138478; --ad: #8E4FE0; --grass: #8CCB6A;
+      --sky-top: #2E2557; --sky-bottom: #6B4E9B;
+      --display: "Baloo 2", system-ui, sans-serif; --body: "Nunito", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 600 16px/1.55 var(--body); }
+    a { color: var(--primary-dark); font-weight: 800; text-underline-offset: 3px; }
+    code { font: 700 0.92em ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(43,30,63,0.06); padding: 1px 6px; border-radius: 6px; word-break: break-all; }
+
+    /* Hero: the dusk sky + grass strip from the game's Scene backdrop. */
+    .hero { background: linear-gradient(var(--sky-top), var(--sky-bottom)); color: #fff; position: relative; padding: 44px 16px 72px; text-align: center; overflow: hidden; }
+    .hero::after { content: ""; position: absolute; left: -5%; right: -5%; bottom: -40px; height: 80px; background: var(--grass); border-radius: 50% 50% 0 0; box-shadow: inset 0 6px 0 rgba(255,255,255,0.18); }
+    .stars { position: absolute; inset: 0; background-image: radial-gradient(2px 2px at 12% 22%, #fff8, transparent), radial-gradient(2px 2px at 78% 18%, #fff9, transparent), radial-gradient(1.5px 1.5px at 40% 12%, #fff7, transparent), radial-gradient(1.5px 1.5px at 88% 46%, #fff6, transparent), radial-gradient(2px 2px at 24% 52%, #fff5, transparent); }
+    .app-icon { position: relative; width: 84px; height: 84px; border-radius: 24px; box-shadow: 0 5px 0 rgba(0,0,0,0.25); display: block; margin: 0 auto 14px; background: var(--primary); }
+    .hero h1 { position: relative; font: 800 40px/1.05 var(--display); margin: 0; letter-spacing: -0.5px; }
+    .hero p { position: relative; margin: 8px 0 0; color: #E6DDF7; font-weight: 700; }
+
+    main { max-width: 680px; margin: -28px auto 0; padding: 0 16px 56px; position: relative; display: grid; gap: 18px; }
+
+    .card { background: var(--surface); border: 2px solid var(--line); border-radius: 24px; padding: 18px 18px 8px; box-shadow: 0 4px 0 var(--line); }
+    .card h2 { display: flex; align-items: center; gap: 12px; font: 700 22px/1.2 var(--display); margin: 0 0 10px; }
+    .tile { flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 20px; background: rgba(43,30,63,0.06); }
+    .card p, .card li { margin: 0 0 10px; }
+    .card ul { margin: 0 0 10px; padding-left: 20px; }
+    .card li::marker { color: var(--primary); }
+    .muted { color: var(--muted); }
+
+    .summary { background: var(--primary); border-color: var(--primary); box-shadow: 0 6px 0 var(--primary-dark); color: #fff; }
+    .summary h2 { color: #fff; }
+    .summary .tile { background: rgba(255,255,255,0.2); }
+    .summary a { color: #fff; }
+
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
+    .pill { font: 800 13px/1 var(--body); padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.22); }
+
+    .ad { border-color: var(--ad); border-width: 3px; box-shadow: 0 6px 0 #6A2FBF; }
+    .ad .tile { background: rgba(142,79,224,0.12); }
+
+    .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: var(--teal); color: #fff; font: 800 18px/1 var(--display); padding: 14px 20px; border-radius: 20px; box-shadow: 0 5px 0 var(--teal-dark); margin: 4px 0 14px; }
+    .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--teal-dark); }
+
+    footer { text-align: center; color: var(--muted); font-size: 14px; padding: 8px 16px 40px; }
+
+    @media (max-width: 420px) { .hero h1 { font-size: 34px; } .card h2 { font-size: 20px; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="stars" aria-hidden="true"></div>
+    <img class="app-icon" src="/icon.png" alt="NewLife app icon" width="84" height="84">
+    <h1>Privacy Policy</h1>
+    <p>NewLife · Effective 19 November 2026</p>
+  </header>
+
+  <main>
+    <section class="card summary">
+      <h2><span class="tile" aria-hidden="true">✨</span>The short version</h2>
+      <div class="pills">
+        <span class="pill">No account</span>
+        <span class="pill">Saves stay on your phone</span>
+        <span class="pill">Ads by Google AdMob</span>
+      </div>
+      <p>NewLife never sends your game to a server. The ads come from Google, and Google may collect device data, such as your advertising ID, to show and measure them. You can control that at any time.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">👋</span>Who we are</h2>
+      <p>NewLife is a life-simulation game made by an independent developer, Anubhav Dubey ("we", "us"). Android package: <code>com.anubhavdubey.newlife</code>.</p>
+      <p>Questions about privacy: <a href="mailto:programmingwithanubhav@gmail.com">programmingwithanubhav@gmail.com</a></p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">📱</span>What stays on your phone</h2>
+      <p>The game saves your current life, past lives, unlocked looks and settings (sound, music) only on your device. We never receive this data.</p>
+      <ul>
+        <li>We don't ask for your name, email, phone number, contacts, location, photos or microphone.</li>
+        <li>There's no sign-in and no account.</li>
+        <li>We don't use our own analytics or crash-reporting services.</li>
+      </ul>
+    </section>
+
+    <section class="card ad">
+      <h2><span class="tile" aria-hidden="true">📺</span>Ads from Google AdMob</h2>
+      <p>NewLife shows banner, full-screen and optional rewarded video ads from Google AdMob. To show ads, measure them, prevent fraud and (where you allow it) personalize them, Google may collect:</p>
+      <ul>
+        <li>your device's advertising ID</li>
+        <li>your IP address and the approximate location it gives</li>
+        <li>device and app details (model, Android version, app version, language)</li>
+        <li>ad interactions (ads shown, taps, rewarded videos watched)</li>
+      </ul>
+      <p>We don't see or control this data. Google handles it under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Google explains how it uses this data in <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from apps that use its services</a>.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">🛡️</span>Your choices</h2>
+      <ul>
+        <li><strong>EEA, UK and Switzerland:</strong> on first launch, Google's consent form asks whether ads may be personalized. If you say no, you still see ads, but they aren't personalized.</li>
+        <li><strong>US states with privacy laws</strong> (such as California): you can opt out of the sale or sharing of your information for ads in the same form.</li>
+        <li>You can change your choice at any time in the game under <strong>Settings → Privacy &amp; ad choices</strong> (shown where the law requires it).</li>
+        <li>You can reset or delete your advertising ID in Android <strong>Settings → Google → Ads</strong> (on some phones: <strong>Settings → Privacy → Ads</strong>).</li>
+        <li>Rewarded ads are always optional. You can play the whole game without watching one.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">📤</span>Sharing your life story</h2>
+      <p>When you tap Share at the end of a life, the game makes an image on your phone and opens Android's share menu. The image goes only to the app you choose, and that app's privacy policy applies.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">🗑️</span>Deleting your data</h2>
+      <p>In the game, open <strong>Settings → Erase all data</strong> to delete every life on your phone. Uninstalling the app does the same. We keep no copy, so there's nothing to delete on our side.</p>
+      <p>To manage ad data held by Google, use the choices above or <a href="https://myadcenter.google.com/">My Ad Center</a>.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">🧒</span>Children</h2>
+      <p>NewLife is made for players 13 and older and isn't directed at children under 13. We don't knowingly collect personal information from children. Ads in the game are limited to content rated for teens. If you think a child under 13 is using the game, email us and we'll help.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">🔒</span>Security</h2>
+      <p>Your saves sit in the app's private storage, which other apps can't read. Ad requests to Google use encrypted connections (HTTPS).</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">📝</span>Changes to this policy</h2>
+      <p>If NewLife starts handling data differently, for example by adding an in-app purchase, we'll update this page and its effective date before the change ships.</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="tile" aria-hidden="true">💌</span>Contact us</h2>
+      <p class="muted">Questions, requests or worries about your privacy:</p>
+      <a class="btn" href="mailto:programmingwithanubhav@gmail.com">✉️ Email us</a>
+    </section>
+  </main>
+
+  <footer>© 2026 NewLife · Made with care by Anubhav Dubey</footer>
+</body>
+</html>
